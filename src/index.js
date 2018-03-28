@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './redux/configureStore';
+import App from './app';
 
 require('./index.scss');
 
-const App = () => {
-  return <div>Place holder</div>;
-};
-
-export default App;
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={configureStore()}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
