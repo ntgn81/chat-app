@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "test": "echo 'To be replaced with jest once we have tests' && exit 0;",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
     "lint": "eslint .",
     "precommit": "npm run lint && npm run test"
   },
