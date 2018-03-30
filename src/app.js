@@ -1,14 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const App = props => {
-  return <div>{props.value}</div>;
+  return !props.socket ? (
+    <div>Initializing Socket</div>
+  ) : (
+    <div>Socket Initialized</div>
+  );
 };
 
-function mapStateToProps(state) {
-  return {
-    value: state.comingFromRedux
-  };
-}
+App.propTypes = {
+  socket: PropTypes.object
+};
+
+const mapStateToProps = ({ socket }) => ({ socket });
 
 export default connect(mapStateToProps)(App);
