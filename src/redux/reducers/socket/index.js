@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { SOCKET_CONNECTED, SOCKET_CLOSED } from '../constants/actions';
+import { SOCKET_CONNECTED, SOCKET_CLOSED } from '../../constants/actions';
 
 const initialState = null;
 

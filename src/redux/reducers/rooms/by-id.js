@@ -1,18 +1,18 @@
 import { handleActions } from 'redux-actions';
 
-import { NEW_MESSAGE, USER_TYPING } from '../constants/actions';
+import { NEW_MESSAGE, USER_TYPING } from '../../constants/actions';
 
 const initialState = {};
 
 export default handleActions(
   {
-    [NEW_MESSAGE]: (state, { payload: { roomId, message } }) => {
-      const currentRoom = state[roomId] || {};
+    [NEW_MESSAGE]: (state, { payload: message }) => {
+      const currentRoom = state[message.roomId] || {};
       const currentMessages = currentRoom.messages || [];
 
       return {
         ...state,
-        [roomId]: {
+        [message.roomId]: {
           ...currentRoom,
           messages: currentMessages.includes(message.id)
             ? currentMessages
