@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const App = props => {
+const Root = props => {
   if (!props.currentUser) {
     return <div>Not Logged In</div>;
   }
@@ -13,7 +13,7 @@ const App = props => {
   return <div>Ready to go. Hello, {props.currentUser.name}!</div>;
 };
 
-App.propTypes = {
+Root.propTypes = {
   currentUser: PropTypes.string,
   socket: PropTypes.object
 };
@@ -23,4 +23,4 @@ const mapStateToProps = ({ socket, users }) => ({
   currentUser: users.byId[users.current]
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Root);

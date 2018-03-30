@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './app';
+import Root from './components/root/root';
 import configureStore from './redux/configureStore';
 import authActions from './redux/actions/auth';
 
@@ -24,7 +24,7 @@ const content = users.map(user => {
 
   return (
     <Provider key={user.id} store={store}>
-      <App />
+      <Root />
     </Provider>
   );
 });
