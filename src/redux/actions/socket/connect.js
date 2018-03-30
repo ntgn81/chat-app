@@ -5,7 +5,7 @@ import { SOCKET_CONNECTED, SOCKET_CLOSED } from '../../constants/actions';
 const socketConnected = createAction(SOCKET_CONNECTED);
 const socketClosed = createAction(SOCKET_CLOSED);
 
-export default () => (dispatch, getState) => {
+export default userId => dispatch => {
   const socket = new MockWebSocket();
 
   socket.onopen = () => {

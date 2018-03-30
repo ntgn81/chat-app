@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './app';
 import configureStore from './redux/configureStore';
-import socketConnect from './redux/actions/socket/connect';
+import authActions from './redux/actions/auth';
 
 require('./index.scss');
 
@@ -20,7 +20,7 @@ const users = [
 
 const content = users.map(user => {
   const store = configureStore();
-  store.dispatch(socketConnect());
+  store.dispatch(authActions.login(user));
 
   return (
     <Provider key={user.id} store={store}>
