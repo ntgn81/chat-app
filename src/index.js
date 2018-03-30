@@ -7,12 +7,26 @@ import socketConnect from './redux/actions/socket/connect';
 
 require('./index.scss');
 
-const store = configureStore();
-store.dispatch(socketConnect());
+const users = [
+  {
+    id: 'u1',
+    name: 'Laura'
+  },
+  {
+    id: 'u2',
+    name: 'Rob'
+  }
+];
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app')
-);
+const content = users.map(user => {
+  const store = configureStore();
+  store.dispatch(socketConnect());
+
+  return (
+    <Provider key={user.id} store={store}>
+      <App />
+    </Provider>
+  );
+});
+
+ReactDOM.render(content, document.getElementById('app'));
