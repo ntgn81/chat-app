@@ -16,3 +16,5 @@ export const rooms = [
     users: ['u1', 'u2']
   }
 ];
+
+export default { users, rooms };

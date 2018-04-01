@@ -1,7 +1,7 @@
 // mock-http, replace with http calls using something like axios
 const mockData = require('../mock-data');
 
-export async function createPrivateRoom(ownUserId, targetUserId) {
+async function createPrivateRoom(ownUserId, targetUserId) {
   const users = [ownUserId, targetUserId].sort();
   let room = mockData.rooms.find(
     room =>
@@ -24,3 +24,5 @@ export async function createPrivateRoom(ownUserId, targetUserId) {
     users: mockData.users.filter(user => users.includes(user.id))
   };
 }
+
+export default { createPrivateRoom };

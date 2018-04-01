@@ -5,3 +5,6 @@ export const SOCKET_CLOSED = 'SOCKET_CLOSED';
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const ADD_USERS = 'ADD_USERS';
+
+export const SET_CURRENT_ROOM = 'SET_CURRENT_ROOM';
+export const ADD_ROOMS = 'ADD_ROOMS';

@@ -1,18 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import roomActions from '../../redux/actions/rooms';
 
-const Root = props => {
-  if (!props.currentUser) {
-    return <div>Not Logged In</div>;
+class Root extends React.Component {
+  componentWillReceiveProps(newProps) {
+    // only for demo, first time user logging in
+    // open private chat room with the other person
+    if (!this.props.socket && newProps.socket) {
+      this.props.dispatch(roomActions.createPrivateRoom(newProps.otherUserId));
+    }
   }
 
-  if (!props.socket) {
-    return <div>Logged In. Not Connected</div>;
-  }
+  render() {
+    if (!this.props.currentUser) {
+      return <div>Not Logged In</div>;
+    }
 
-  return <div>Ready to go. Hello, {props.currentUser.name}!</div>;
-};
+    if (!this.props.socket) {
+      return <div>Logged In. Not Connected</div>;
+    }
+
+    return <div>Ready to go. Hello, {this.props.currentUser.name}!</div>;
+  }
+}
 
 Root.propTypes = {
   currentUser: PropTypes.object,
