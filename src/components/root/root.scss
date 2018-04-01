@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  .user-header {
+    flex: 0 10px;
+    background-color: beige;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+  }
+  .user-content {
+    flex: auto;
+  }
+}

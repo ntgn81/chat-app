@@ -1,9 +1,13 @@
 import { createAction } from 'redux-actions';
-import { ADD_ROOMS, ADD_USERS } from '../../constants/actions';
+import {
+  ADD_ROOMS,
+  ADD_USERS,
+  SET_CURRENT_ROOM
+} from '../../constants/actions';
 // import socketActions from '../socket';
 import httpService from '../../../services/mock-http';
 
-// const setCurrentUser = createAction(SET_CURRENT_USER);
+const setCurrentRoom = createAction(SET_CURRENT_ROOM);
 const addRooms = createAction(ADD_ROOMS);
 const addUsers = createAction(ADD_USERS);
 
@@ -18,4 +22,5 @@ export default targetUserId => async (dispatch, getState) => {
 
   dispatch(addRooms([response.room]));
   dispatch(addUsers(response.users));
+  dispatch(setCurrentRoom(response.room.id));
 };

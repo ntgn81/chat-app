@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import roomActions from '../../redux/actions/rooms';
+import ChatRoom from '../chat-room/chat-room';
+
+require('./root.scss');
 
 class Root extends React.Component {
   componentWillReceiveProps(newProps) {
@@ -21,18 +24,32 @@ class Root extends React.Component {
       return <div>Logged In. Not Connected</div>;
     }
 
-    return <div>Ready to go. Hello, {this.props.currentUser.name}!</div>;
+    return (
+      <div className="root">
+        <div className="user-header">
+          <div>{this.props.currentUser.name}'s Chat Window</div>
+        </div>
+        <div className="user-content">
+          {!!this.props.currentRoom && (
+            <ChatRoom roomId={this.props.currentRoom} />
+          )}
+        </div>
+      </div>
+    );
   }
 }
 
 Root.propTypes = {
   currentUser: PropTypes.object,
-  socket: PropTypes.object
+  currentRoom: PropTypes.string,
+  socket: PropTypes.object,
+  dispatch: PropTypes.func
 };
 
-const mapStateToProps = ({ socket, users }) => ({
+const mapStateToProps = ({ socket, users, rooms }) => ({
   socket,
-  currentUser: users.byId[users.current]
+  currentUser: users.byId[users.current],
+  currentRoom: rooms.current
 });
 
 export default connect(mapStateToProps)(Root);
