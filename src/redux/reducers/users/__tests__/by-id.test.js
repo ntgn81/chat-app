@@ -1,23 +1,28 @@
 import reducer from '../by-id';
-import { AUTH_LOGGED_IN } from '../../../constants/actions';
+import { ADD_USERS } from '../../../constants/actions';
 
 describe('reducers/users/by-id', () => {
-  describe('AUTH_LOGGED_IN action', () => {
-    it('should add logged in user to state', () => {
+  describe('ADD_USERS action', () => {
+    it('should add given users to state', () => {
       const state = {};
-      const testUser = {
+      const testUser1 = {
         id: 'u1',
         name: '🐕🐕🐕🐕🐕'
       };
+      const testUser2 = {
+        id: 'u1',
+        name: '🐈🐈🐈🐈🐈'
+      };
       const action = {
-        type: AUTH_LOGGED_IN,
-        payload: testUser
+        type: ADD_USERS,
+        payload: [testUser1, testUser2]
       };
 
       const newState = reducer(state, action);
 
       expect(newState).toEqual({
-        [testUser.id]: testUser
+        [testUser1.id]: testUser1,
+        [testUser2.id]: testUser2
       });
     });
   });

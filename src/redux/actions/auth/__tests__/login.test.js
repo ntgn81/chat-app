@@ -1,4 +1,4 @@
-import { AUTH_LOGGED_IN } from '../../../constants/actions';
+import { ADD_USERS } from '../../../constants/actions';
 import action from '../login';
 import socketActions from '../../socket';
 
@@ -11,10 +11,10 @@ describe('actions/auth/login', () => {
     action(user)(mockDispatch);
   });
 
-  it('should dispatch AUTH_LOGGED_IN with the user as payload', () => {
+  it('should dispatch ADD_USERS with the user as payload', () => {
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: AUTH_LOGGED_IN,
-      payload: user
+      type: ADD_USERS,
+      payload: [user]
     });
   });
 

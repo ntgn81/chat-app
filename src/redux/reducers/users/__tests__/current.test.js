@@ -1,21 +1,18 @@
 import reducer from '../current';
-import { AUTH_LOGGED_IN } from '../../../constants/actions';
+import { SET_CURRENT_USER } from '../../../constants/actions';
 
 describe('reducers/users/current', () => {
-  describe('AUTH_LOGGED_IN action', () => {
-    const testUser = {
-      id: 'u1',
-      name: '🐕🐕🐕🐕🐕'
-    };
+  describe('SET_CURRENT_USER action', () => {
+    const testUserId = 'u1';
 
     it('should set state as logged in user id', () => {
       const action = {
-        type: AUTH_LOGGED_IN,
-        payload: testUser
+        type: SET_CURRENT_USER,
+        payload: testUserId
       };
       const newState = reducer(null, action);
 
-      expect(newState).toBe(testUser.id);
+      expect(newState).toBe(testUserId);
     });
   });
 });

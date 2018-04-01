@@ -1,15 +1,21 @@
 import { handleActions } from 'redux-actions';
 
-import { AUTH_LOGGED_IN } from '../../constants/actions';
+import { ADD_USERS } from '../../constants/actions';
 
 const initialState = {};
 
 export default handleActions(
   {
-    [AUTH_LOGGED_IN]: (state, { payload: user }) => ({
-      ...state,
-      [user.id]: user
-    })
+    [ADD_USERS]: (state, { payload: users }) => {
+      const newUsers = users.reduce((prev, curr) => {
+        prev[curr.id] = curr;
+        return prev;
+      }, {});
+      return {
+        ...state,
+        ...newUsers
+      };
+    }
   },
   initialState
 );

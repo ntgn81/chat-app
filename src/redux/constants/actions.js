@@ -3,4 +3,5 @@ export const USER_TYPING = 'USER_TYPING';
 export const SOCKET_CONNECTED = 'SOCKET_CONNECTED';
 export const SOCKET_CLOSED = 'SOCKET_CLOSED';
 
-export const AUTH_LOGGED_IN = 'AUTH_LOGGED_IN';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const ADD_USERS = 'ADD_USERS';
