@@ -10,11 +10,12 @@ const Root = props => {
   if (!props.socket) {
     return <div>Logged In. Not Connected</div>;
   }
+
   return <div>Ready to go. Hello, {props.currentUser.name}!</div>;
 };
 
 Root.propTypes = {
-  currentUser: PropTypes.string,
+  currentUser: PropTypes.object,
   socket: PropTypes.object
 };
 

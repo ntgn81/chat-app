@@ -1,4 +1,4 @@
-export default class MockWebSocket {
+class MockWebSocket {
   constructor(url) {
     this.readyState = 1; // just so it serializes in redux store nicely
     this.onopen = () => {};
@@ -13,3 +13,9 @@ export default class MockWebSocket {
     this.onmessage(message);
   }
 }
+
+function create(userId) {
+  return new MockWebSocket();
+}
+
+export default { create };
