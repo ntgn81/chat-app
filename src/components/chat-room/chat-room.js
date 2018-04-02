@@ -9,7 +9,7 @@ import roomActions from '../../redux/actions/rooms';
 
 import './chat-room.scss';
 
-class ChatRoom extends React.Component {
+export class ChatRoom extends React.Component {
   onInputSubmit = value => {
     this.props.dispatch(roomActions.submitMessage(this.props.roomId, value));
   };
@@ -26,7 +26,7 @@ class ChatRoom extends React.Component {
       <div className="chat-room">
         <div className="messages-container">
           <ChatMessages
-            messagesIds={this.props.room.messageIds}
+            messageIds={this.props.room.messageIds}
             userId={this.props.userId}
           />
 

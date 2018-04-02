@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // import './chat-messages.scss';
 
-class ChatTypingUsers extends React.PureComponent {
+export class ChatTypingUsers extends React.PureComponent {
   render() {
     if (!this.props.typingUsers || !this.props.typingUsers.length) {
       return null;
@@ -18,11 +18,12 @@ class ChatTypingUsers extends React.PureComponent {
       return null;
     }
 
+    const userList = usersWithoutSelf.map(user => user.name).join(', ');
+    const isAre = usersWithoutSelf.length > 1 ? 'are' : 'is';
+
     return (
       <div className="chat-typing-users">
-        {usersWithoutSelf.map(user => user.name).join(', ')}&nbsp;
-        {this.props.typingUserIds.length > 1 ? 'are' : 'is'}&nbsp;
-        {'typing...'}
+        {userList} {isAre} typing...
       </div>
     );
   }

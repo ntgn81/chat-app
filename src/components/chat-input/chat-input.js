@@ -10,9 +10,7 @@ class ChatInput extends React.Component {
 
   onKeyUp = e => {
     if (e.keyCode === 13 && e.target.value) {
-      if (this.props.onSubmit) {
-        this.props.onSubmit(e.target.value);
-      }
+      this.props.onSubmit(e.target.value);
       e.target.value = '';
       this._callIsTypingChangeWithFalse();
     }
@@ -41,7 +39,8 @@ class ChatInput extends React.Component {
 }
 
 ChatInput.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  onIsTypingChange: PropTypes.func
 };
 
 export default ChatInput;

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import './chat-message.scss';
 
-class ChatMessage extends React.PureComponent {
+export class ChatMessage extends React.PureComponent {
   render() {
     return (
       <div className="chat-message">
@@ -19,7 +19,7 @@ class ChatMessage extends React.PureComponent {
 }
 
 ChatMessage.propTypes = {
-  messageId: PropTypes.string.isRequired,
+  messageId: PropTypes.string,
   message: PropTypes.shape({
     content: PropTypes.string,
     created: PropTypes.string
