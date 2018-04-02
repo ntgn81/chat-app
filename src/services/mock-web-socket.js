@@ -1,4 +1,8 @@
-import { NEW_MESSAGE, JOIN_ROOM } from '../redux/constants/actions';
+import {
+  NEW_MESSAGE,
+  JOIN_ROOM,
+  USER_TYPING
+} from '../redux/constants/actions';
 
 const connections = [];
 window.connections = connections;
@@ -17,11 +21,11 @@ class MockWebSocket {
     connections.push({ userId, rooms: [], connection: this });
   }
 
-  _processNewMessage(message) {
+  _forwardToMatchingRooms(type, message) {
     connections.find(conn => {
       if (conn.rooms.includes(message.roomId)) {
         conn.connection.onmessage({
-          type: NEW_MESSAGE,
+          type,
           payload: message
         });
       }
@@ -39,7 +43,8 @@ class MockWebSocket {
   send({ type, payload }) {
     switch (type) {
       case NEW_MESSAGE:
-        this._processNewMessage(payload);
+      case USER_TYPING:
+        this._forwardToMatchingRooms(type, payload);
         break;
       case JOIN_ROOM:
         this._processJoinRoom(payload.userId, payload.roomId);
