@@ -23,23 +23,23 @@ export default handleActions(
 
     [NEW_MESSAGE]: (state, { payload: message }) => {
       const currentRoom = state[message.roomId] || {};
-      const currentMessages = currentRoom.messages || [];
+      const currentMessageIds = currentRoom.messageIds || [];
 
       return {
         ...state,
         [message.roomId]: {
           ...currentRoom,
-          messages: currentMessages.includes(message.id)
-            ? currentMessages
-            : [...currentMessages, message.id]
+          messageIds: currentMessageIds.includes(message.id)
+            ? currentMessageIds
+            : [...currentMessageIds, message.id]
         }
       };
     },
 
     [USER_TYPING]: (state, { payload: { userId, roomId, isTyping } }) => {
       const currentRoom = state[roomId] || {};
-      const uniqueSet = new Set(currentRoom.typingUsers);
-      const updatedTypingUsers = isTyping
+      const uniqueSet = new Set(currentRoom.typingUserIds);
+      const updatedTypingUserIds = isTyping
         ? uniqueSet.add(userId)
         : uniqueSet.delete(userId);
 
@@ -47,7 +47,7 @@ export default handleActions(
         ...state,
         [roomId]: {
           ...currentRoom,
-          typingUsers: [...updatedTypingUsers]
+          typingUserIds: [...updatedTypingUserIds]
         }
       };
     }

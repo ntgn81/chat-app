@@ -43,7 +43,7 @@ describe('reducers/rooms/by-id', () => {
 
       expect(newState).toEqual({
         [testMessage.roomId]: {
-          messages: [testMessage.id]
+          messageIds: [testMessage.id]
         }
       });
     });
@@ -56,7 +56,7 @@ describe('reducers/rooms/by-id', () => {
 
       expect(newState).toEqual({
         [testMessage.roomId]: {
-          messages: [testMessage.id]
+          messageIds: [testMessage.id]
         }
       });
     });
@@ -80,7 +80,7 @@ describe('reducers/rooms/by-id', () => {
 
       expect(newState).toEqual({
         [testMessage.roomId]: {
-          messages: [testMessage.id, secondMessage.id]
+          messageIds: [testMessage.id, secondMessage.id]
         }
       });
     });
@@ -106,7 +106,7 @@ describe('reducers/rooms/by-id', () => {
       expect(newState).not.toBe(state);
     });
 
-    it('should add userId to typingUsers list', () => {
+    it('should add userId to typingUserIds list', () => {
       const state = {};
 
       const newState = reducer(state, {
@@ -116,12 +116,12 @@ describe('reducers/rooms/by-id', () => {
 
       expect(newState).toEqual({
         [roomId]: {
-          typingUsers: [userId]
+          typingUserIds: [userId]
         }
       });
     });
 
-    it('should not add duplicate userId to typingUsers list', () => {
+    it('should not add duplicate userId to typingUserIds list', () => {
       const state = {};
 
       let newState = reducer(state, {
@@ -135,12 +135,12 @@ describe('reducers/rooms/by-id', () => {
 
       expect(newState).toEqual({
         [roomId]: {
-          typingUsers: [userId]
+          typingUserIds: [userId]
         }
       });
     });
 
-    it('should remove userId from typingUsers list', () => {
+    it('should remove userId from typingUserIds list', () => {
       const state = {};
 
       let newState = reducer(state, {
@@ -157,7 +157,7 @@ describe('reducers/rooms/by-id', () => {
 
       expect(newState).toEqual({
         [roomId]: {
-          typingUsers: []
+          typingUserIds: []
         }
       });
     });

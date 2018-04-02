@@ -26,13 +26,13 @@ class ChatRoom extends React.Component {
       <div className="chat-room">
         <div className="messages-container">
           <ChatMessages
-            messages={this.props.room.messages}
+            messagesIds={this.props.room.messageIds}
             userId={this.props.userId}
           />
 
           <div className="typing-users-container">
             <ChatTypingUsers
-              typingUserIds={this.props.room.typingUsers}
+              typingUserIds={this.props.room.typingUserIds}
               userId={this.props.userId}
             />
           </div>
@@ -53,8 +53,8 @@ ChatRoom.propTypes = {
   userId: PropTypes.string,
   roomId: PropTypes.string,
   room: PropTypes.shape({
-    messages: PropTypes.arrayOf(PropTypes.string),
-    typingUsers: PropTypes.arrayOf(PropTypes.string)
+    messageIds: PropTypes.arrayOf(PropTypes.string),
+    typingUserIds: PropTypes.arrayOf(PropTypes.string)
   }),
   dispatch: PropTypes.func
 };

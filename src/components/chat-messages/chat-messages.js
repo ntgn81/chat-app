@@ -30,13 +30,13 @@ class ChatMessages extends React.PureComponent {
   };
 
   render() {
-    if (!this.props.messages) return null;
+    if (!this.props.messagesIds) return null;
     return (
       <div
         className="chat-messages"
         ref={this.assignRef}
         onScroll={this.onScroll}>
-        {this.props.messages.map(messageId => (
+        {this.props.messagesIds.map(messageId => (
           <ChatMessage key={messageId} messageId={messageId} />
         ))}
       </div>
@@ -45,7 +45,7 @@ class ChatMessages extends React.PureComponent {
 }
 
 ChatMessages.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.string),
+  messagesIds: PropTypes.arrayOf(PropTypes.string),
   userId: PropTypes.string
 };
 
