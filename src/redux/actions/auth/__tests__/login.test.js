@@ -3,7 +3,7 @@ import action from '../login';
 import socketActions from '../../socket';
 
 describe('actions/auth/login', () => {
-  const user = {};
+  const user = { id: 'u1' };
   let mockDispatch;
   beforeEach(() => {
     mockDispatch = jest.fn();
@@ -19,6 +19,6 @@ describe('actions/auth/login', () => {
   });
 
   it('should dispatch socket connect with the user', () => {
-    expect(socketActions.connect).toHaveBeenCalledWith(user);
+    expect(socketActions.connect).toHaveBeenCalledWith(user.id);
   });
 });

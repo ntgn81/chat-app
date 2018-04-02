@@ -8,5 +8,5 @@ const addUsers = createAction(ADD_USERS);
 export default user => dispatch => {
   dispatch(setCurrentUser(user.id));
   dispatch(addUsers([user]));
-  dispatch(socketActions.connect(user));
+  dispatch(socketActions.connect(user.id));
 };

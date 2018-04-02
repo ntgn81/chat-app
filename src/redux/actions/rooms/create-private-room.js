@@ -23,4 +23,11 @@ export default targetUserId => async (dispatch, getState) => {
   dispatch(addRooms([response.room]));
   dispatch(addUsers(response.users));
   dispatch(setCurrentRoom(response.room.id));
+  state.socket.send({
+    type: 'JOIN_ROOM',
+    payload: {
+      userId: currentUserId,
+      roomId: response.room.id
+    }
+  });
 };

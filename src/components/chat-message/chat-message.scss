@@ -1,0 +1,15 @@
+.chat-message {
+  display: flex;
+
+  .chat-message-user {
+    flex: 1;
+  }
+
+  .chat-message-content {
+    flex: 3;
+  }
+
+  .chat-message-time {
+    flex: 1;
+  }
+}
