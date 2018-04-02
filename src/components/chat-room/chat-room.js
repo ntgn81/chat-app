@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChatInput from '../chat-input/chat-input';
-import ChatMessage from '../chat-message/chat-message';
-import ChatTypingUser from '../chat-typing-user/chat-typing-user';
+import ChatMessages from '../chat-messages/chat-messages';
+import ChatTypingUsers from '../chat-typing-users/chat-typing-users';
 
 import roomActions from '../../redux/actions/rooms';
 
@@ -20,45 +20,31 @@ class ChatRoom extends React.Component {
     );
   };
 
-  renderMessages() {
-    return (
-      this.props.room.messages &&
-      this.props.room.messages.map(messageId => (
-        <ChatMessage key={messageId} messageId={messageId} />
-      ))
-    );
-  }
-
-  renderTypingUsers() {
-    return (
-      this.props.room.typingUsers &&
-      this.props.room.typingUsers.map(
-        userId =>
-          this.props.userId !== userId && (
-            <ChatTypingUser key={userId} userId={userId} />
-          )
-      )
-    );
-  }
-
   render() {
+    if (!this.props.room) return null;
     return (
-      !!this.props.room && (
-        <div className="chat-room">
-          <div className="messages-container">{this.renderMessages()}</div>
+      <div className="chat-room">
+        <div className="messages-container">
+          <ChatMessages
+            messages={this.props.room.messages}
+            userId={this.props.userId}
+          />
 
           <div className="typing-users-container">
-            <div className="scroll">{this.renderTypingUsers()}</div>
-          </div>
-
-          <div className="input-container">
-            <ChatInput
-              onSubmit={this.onInputSubmit}
-              onIsTypingChange={this.onIsTypingChange}
+            <ChatTypingUsers
+              typingUserIds={this.props.room.typingUsers}
+              userId={this.props.userId}
             />
           </div>
         </div>
-      )
+
+        <div className="input-container">
+          <ChatInput
+            onSubmit={this.onInputSubmit}
+            onIsTypingChange={this.onIsTypingChange}
+          />
+        </div>
+      </div>
     );
   }
 }

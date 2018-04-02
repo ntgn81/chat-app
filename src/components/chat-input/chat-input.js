@@ -14,6 +14,7 @@ class ChatInput extends React.Component {
         this.props.onSubmit(e.target.value);
       }
       e.target.value = '';
+      this._callIsTypingChangeWithFalse();
     }
   };
 

@@ -5,7 +5,6 @@ import {
 } from '../redux/constants/actions';
 
 const connections = [];
-window.connections = connections;
 
 // most of this logic would move to websocket server for real implementation
 class MockWebSocket {
