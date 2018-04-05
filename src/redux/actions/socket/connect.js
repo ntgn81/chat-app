@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import webSocket from '../../../services/mock-web-socket';
+import webSocket from '../../../services/web-socket';
 import {
   SOCKET_CONNECTED,
   SOCKET_CLOSED,
@@ -22,7 +22,8 @@ export default userId => dispatch => {
     dispatch(socketClosed(socket));
   };
 
-  socket.onmessage = ({ type, payload }) => {
+  socket.onmessage = msgEvent => {
+    const { type, payload } = JSON.parse(msgEvent.data);
     switch (type) {
       case NEW_MESSAGE:
         dispatch(newMessage(payload));

@@ -14,9 +14,11 @@ export default (roomId, content) => (dispatch, getState) => {
     content,
     created: new Date().toISOString()
   };
-  socket.send({
-    type: NEW_MESSAGE,
-    payload: message
-  });
+  socket.send(
+    JSON.stringify({
+      type: NEW_MESSAGE,
+      payload: message
+    })
+  );
   dispatch(newMessage(message));
 };
