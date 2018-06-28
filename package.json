@@ -1,7 +1,7 @@
 {
   "name": "chat-app",
   "version": "1.0.0",
-  "description": "Chat project",
+  "description": "Chat projectzz",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
